@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
 const PORT = 3000
+const postRouter = require('./routes/posts')
 
 app.listen(PORT, () => {
     console.log(`Example my blog is listening on http://localhost:${PORT} `);
     
 })
 
-const blog = [
+const articles = [
     {
         titolo: "Ciambellone",
         contenuto: "Buonissimo",
@@ -43,18 +44,18 @@ const blog = [
 
 
 // Index
-app.get('/' , (req, res) => {
+app.get('/articles' , (req, res) => {
     res.send('Hello Boolean Blog!')
 })
 
 //show
-app.get('api/articles/', (req, res) => {
+app.get('api/articles/:id', (req, res) => {
     res.send('Dettagli del Blod' + req.params.id);
     
 })
 
 //store
-app.post('api/articles/:id', (req, res) => {
+app.post('api/articles', (req, res) => {
     res.send('Creazione nuovo articolo' + req.params.id);
 });
 
@@ -74,4 +75,4 @@ app.delete('api/articles/:id', (req, res) => {
     res.send('Eliminazione degli articoli' + res.params.id);
 })
 
-
+app.use('posts', postRouter)
