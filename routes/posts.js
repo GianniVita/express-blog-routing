@@ -40,14 +40,9 @@ const articles = [
 
 //Index
 router.get('/', (req, res) => {
-    let list = ""
-    
-
-
-    return res.send('Hello Boolean Blog!')
+    let list = articles.map(article => article.titolo)
+    return res.send(`<h1>Lista Articoli</h1><p>${list}</p>`)
 })
-   
-   
 
 //show
 router.get('/:id', (req, res) => {
@@ -78,3 +73,9 @@ router.delete('/:id', (req, res) => {
 
 
 module.exports = router;
+    
+
+
+
+   
+   
