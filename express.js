@@ -42,22 +42,36 @@ const blog = [
 ];
 
 
-
+// Index
 app.get('/' , (req, res) => {
-    res.send('Hello Boolean!')
+    res.send('Hello Boolean Blog!')
 })
 
-app.get('/product/', (req, res) => {
-    console.log(req.params.id);
+//show
+app.get('api/articles/', (req, res) => {
+    res.send('Dettagli del Blod' + req.params.id);
     
 })
 
-app.get('/product/:id', (req, res) => {
-    console.log(req.params.id);
+//store
+app.post('api/articles/:id', (req, res) => {
+    res.send('Creazione nuovo articolo' + req.params.id);
+});
 
+
+//update
+app.put('api/articles/:id', (req, res) => {
+    res.send('Modifica integrale degli articoli' + req.params.id);
+});
+
+//modify
+app.patch('api/articles/:id', (req,res) => {
+    res.send('Modifica parziale degli articoli' + res.params.id);
+});
+
+//destroy
+app.delete('api/articles/:id', (req, res) => {
+    res.send('Eliminazione degli articoli' + res.params.id);
 })
-
-
-
 
 
