@@ -42,37 +42,41 @@ const articles = [
     },
 ];
 
+//root
+app.get('/', (req,res) => {
+    res.send('Welcome to my Blog')
+})
+
 
 // Index
 app.get('/articles' , (req, res) => {
     res.send('Hello Boolean Blog!')
-})
+ })
 
 //show
 app.get('api/articles/:id', (req, res) => {
-    res.send('Dettagli del Blod' + req.params.id);
-    
+  res.send('Dettagli del Blod' + req.params.id);
 })
 
 //store
 app.post('api/articles', (req, res) => {
-    res.send('Creazione nuovo articolo' + req.params.id);
+     res.send('Creazione nuovo articolo' + req.params.id);
 });
 
 
 //update
 app.put('api/articles/:id', (req, res) => {
-    res.send('Modifica integrale degli articoli' + req.params.id);
+  res.send('Modifica integrale degli articoli' + req.params.id);
 });
 
-//modify
+ //modify
 app.patch('api/articles/:id', (req,res) => {
     res.send('Modifica parziale degli articoli' + res.params.id);
-});
+ });
 
-//destroy
-app.delete('api/articles/:id', (req, res) => {
+ //destroy
+ app.delete('api/articles/:id', (req, res) => {
     res.send('Eliminazione degli articoli' + res.params.id);
 })
 
-app.use('posts', postRouter)
+app.use('/posts', postRouter)
