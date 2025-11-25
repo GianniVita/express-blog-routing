@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-// Index
+//Index
 router.get('/', (req, res) => {
     res.send('Hello Boolean Blog!')
 })
